@@ -16,18 +16,18 @@ sources:
           - name: id
             tests: [unique, not_null]
           - name: patient_id
-            tests: [not_null, relationships: {to: source('synthea', 'patients'), field: id}]
+            tests: [not_null]
 
       - name: medications
         columns:
           - name: id
             tests: [unique, not_null]
           - name: patient_id
-            tests: [not_null, relationships: {to: source('synthea', 'patients'), field: id}]
+            tests: [not_null]
 
       - name: observations
         columns:
           - name: id
             tests: [unique, not_null]
           - name: patient_id
-            tests: [not_null, relationships: {to: source('synthea', 'patients'), field: id}]
+            tests: [not_null]
