@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: synthea
+    schema: public
+    tables:
+      - name: patients
+        columns:
+          - name: id
+            tests: [unique, not_null]
+          - name: birth_date
+            tests: [not_null]
+
+      - name: conditions
+        columns:
+          - name: id
+            tests: [unique, not_null]
+          - name: patient_id
+            tests: [not_null, relationships: {to: source('synthea', 'patients'), field: id}]
+
+      - name: medications
+        columns:
+          - name: id
+            tests: [unique, not_null]
+          - name: patient_id
+            tests: [not_null, relationships: {to: source('synthea', 'patients'), field: id}]
+
+      - name: observations
+        columns:
+          - name: id
+            tests: [unique, not_null]
+          - name: patient_id
+            tests: [not_null, relationships: {to: source('synthea', 'patients'), field: id}]
